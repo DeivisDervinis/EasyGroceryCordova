@@ -32,19 +32,124 @@
     <title>jQM Complex Demo</title>
     <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="http://example.gajotres.net/iscrollview/jquery.mobile.iscrollview.css" />
-    <link rel="stylesheet" href="http://example.gajotres.net/iscrollview/jquery.mobile.iscrollview-pull.css" />
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script src="js/index.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 
 <body>
-    <div>
-        <p>Hello World </p>
+    <div data-role="page" id="home">
+
+        <div data-role="header" data-theme="b">
+            <div data-role="navbar">
+                <ul>
+                    <li>
+                        <a href="#searchPage" data-transition="slidefade" data-direction="reverse">Search</a>
+                    </li>
+                    <li>
+                        <a href="#products" data-transition="slidefade">Products</a>
+                    </li>
+                    <li>
+                        <a href="#cart" data-transition="slidefade">Cart</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div data-role="content">
+            <img id="banana" src="https://images-na.ssl-images-amazon.com/images/I/71gI-IUNUkL._SL1500_.jpg" alt="image"/>
+        </div>
     </div>
+
+
+    <div data-role="page" id="products">
+
+        <div data-theme="b" data-role="header" data-position="fixed">
+            <h1>Products</h1>
+        </div>
+
+        <div data-role="content">
+            <ul data-role="listview">
+                <li>
+                    <a id="prod" href="#product_info">Coca Cola</a>
+                </li>
+                <li>
+                    <a href="#">Abbott Sargent</a>
+                </li>
+                <li>
+                    <a href="#">Bowen Doyle</a>
+                </li>
+                <li>
+                    <a href="#">Aimee Frazier</a>
+                </li>
+                <li>
+                    <a href="#">Vinson Drake</a>
+                </li>
+            </ul>
+        </div>
+
+        <div data-theme="a" data-role="footer">
+            <a href="#home" class="ui-btn-left" data-transition="slidefade" data-direction="reverse">Back</a>
+        </div>
+    </div>
+
+    <div data-role="page" id="searchPage">
+
+        <div data-theme="b" data-role="header" data-position="fixed">
+            <h1>Find a product</h1>
+        </div>
+
+        <div data-role="content">
+            <label for="search-basic">Search Input:</label>
+            <input type="search" name="search" id="search-basic" value="" />
+        </div>
+
+        <div data-theme="a" data-role="footer">
+            <a href="#home" class="ui-btn-right" data-transition="slidefade">Back</a>
+        </div>
+    </div>
+
+    <div data-role="page" id="cart">
+
+        <div data-theme="b" data-role="header" data-position="fixed">
+            <h1>Cart</h1>
+        </div>
+
+        <div data-role="content">
+
+        </div>
+
+        <div data-theme="a" data-role="footer">
+            <a href="#home" class="ui-btn-left" data-transition="slidefade" data-direction="reverse">Back</a>
+        </div>
+    </div>
+
+    <div data-role="page" id="product_info">
+
+            <div data-theme="b" data-role="header" data-position="fixed">
+                <h1>Product Info</h1> <!--Needs to be dynamically updated-->
+            </div>
+    
+            <div data-role="content"> <!--Needs to be dynamically updated-->
+                <div class="ui-grid-a">
+                    <div class="ui-block-a">
+                            <img id="cola" src="https://www.118store.com/31171-thickbox_default/coca-cola-glass-bottles.jpg" alt="image"/>
+                    </div>
+                    <div id="prod_container" class="ui-block-b">
+                        <p>Name:</p>
+                        <p>Price</p>
+                    </div>
+                </div>
+                <div id="chart_div"></div>
+            </div>
+    
+            <div data-theme="a" data-role="footer">
+                <a href="#home" class="ui-btn-left" data-transition="slidefade" data-direction="reverse">Back</a>
+            </div>
+        </div>
 </body>
 
 </html>

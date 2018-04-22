@@ -1,8 +1,15 @@
 #Internal package file, do not edit.
+<<<<<<< HEAD
 #Sat Apr 21 23:31:35 EDT 2018
 25.file=C\:\\Users\\moham\\Documents\\EasyGroceryApp\\EasyGroceryCordova\\platforms\\android\\app\\build\\intermediates\\res\\debug\\resources-debug.ap_\\res\\drawable-port-mdpi-v4\\screen.png
 25.base=C\:\\Users\\moham\\Documents\\EasyGroceryApp\\EasyGroceryCordova\\platforms\\android\\app\\build\\intermediates\\res\\debug\\resources-debug.ap_
 22.set=ASSET
+=======
+#Sun Apr 22 00:26:11 EDT 2018
+25.file=D\:\\GithubLocalPath\\Cordova\\EasyGrocery\\platforms\\android\\app\\build\\intermediates\\res\\debug\\resources-debug.ap_\\res\\drawable-land-xhdpi-v4\\screen.png
+25.base=D\:\\GithubLocalPath\\Cordova\\EasyGrocery\\platforms\\android\\app\\build\\intermediates\\res\\debug\\resources-debug.ap_
+22.set=ANDROID_RESOURCE
+>>>>>>> de8d38159f744d6eb4f5e7fa45556677ca710e0e
 8.set=ANDROID_RESOURCE
 11.set=ANDROID_RESOURCE
 27.set=ANDROID_RESOURCE
