@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sat Apr 21 23:56:02 EDT 2018
+#Sun Apr 22 00:05:14 EDT 2018
 25.file=D\:\\GithubLocalPath\\Cordova\\EasyGrocery\\platforms\\android\\app\\build\\intermediates\\res\\debug\\resources-debug.ap_\\res\\drawable-land-xhdpi-v4\\screen.png
 25.base=D\:\\GithubLocalPath\\Cordova\\EasyGrocery\\platforms\\android\\app\\build\\intermediates\\res\\debug\\resources-debug.ap_
 22.set=ANDROID_RESOURCE
