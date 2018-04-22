@@ -72,7 +72,7 @@
         </div>
 
         <div data-role="content">
-            <ul data-role="listview">
+            <ul id="productsList" data-role="listview">
                 <li>
                     <a id="prod" href="#product_info">Coca Cola</a>
                 </li>
@@ -104,8 +104,9 @@
 
         <div data-role="content">
             <label for="search-basic">Search Input:</label>
-            <input type="search" name="search" id="search-basic" value="" />
+            <input type="text" id="myInput" placeholder="Search for product.." title="Type in a name">       
         </div>
+        <ul id="productsListSearch" data-role="listview"></ul>
 
         <div data-theme="a" data-role="footer">
             <a href="#home" class="ui-btn-right" data-transition="slidefade">Back</a>
@@ -136,11 +137,19 @@
             <div data-role="content"> <!--Needs to be dynamically updated-->
                 <div class="ui-grid-a">
                     <div class="ui-block-a">
-                            <img id="cola" src="https://www.118store.com/31171-thickbox_default/coca-cola-glass-bottles.jpg" alt="image"/>
+                            <!--<img id="cola" src="https://www.118store.com/31171-thickbox_default/coca-cola-glass-bottles.jpg" alt="image"/>-->
                     </div>
                     <div id="prod_container" class="ui-block-b">
-                        <p>Name:</p>
-                        <p>Price</p>
+                        <p>Name:</p><p id="productName"></p>
+                        <p>Price:</p><p id="productPrice"></p>
+                        <p>nutritionFacts:</p>
+                        <table id=nutritionFacts>
+                            <tr>
+                            <th>Calories</th>
+                            <th>Nutfree</th>
+                            <th>Sugar</th>
+                            </tr>
+                        </table>
                     </div>
                 </div>
                 <div id="chart_div"></div>
