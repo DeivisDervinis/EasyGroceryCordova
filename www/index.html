@@ -46,11 +46,12 @@
             <div data-role="navbar">
                 <ul>
                     <li>
-                        <a href="#">Home</a>
+                        <a href="#searchPage" data-transition="slidefade" data-direction="reverse">Search</a>
                     </li>
                     <li>
-                        <a href="#page3" data-transition="slidefade">Products</a>
+                        <a href="#products" data-transition="slidefade">Products</a>
                     </li>
+                    <li><a href="#cart" data-transition="slidefade">Cart</a></li>
                 </ul>
             </div>
         </div>
@@ -60,7 +61,7 @@
     </div>
 
 
-    <div data-role="page" id="page3">
+    <div data-role="page" id="products">
 
         <div data-theme="b" data-role="header" data-position="fixed">
             <h1>Products</h1>
@@ -71,10 +72,40 @@
         </div>
 
         <div data-theme="a" data-role="footer">
-            <a href="#home" class="ui-btn-left" data-transition="slide" data-direction="reverse">Back</a>
+            <a href="#home" class="ui-btn-left" data-transition="slidefade" data-direction="reverse">Back</a>
+        </div>
+    </div>
+
+    <div data-role="page" id="searchPage">
+
+        <div data-theme="b" data-role="header" data-position="fixed">
+            <h1>Find a product</h1>
         </div>
 
+        <div data-role="content">
+            <label for="search-basic">Search Input:</label>
+            <input type="search" name="search" id="search-basic" value="" />
+        </div>
+
+        <div data-theme="a" data-role="footer">
+            <a href="#home" class="ui-btn-right" data-transition="slidefade">Back</a>
+        </div>
     </div>
+
+    <div data-role="page" id="cart">
+
+            <div data-theme="b" data-role="header" data-position="fixed">
+                <h1>Cart</h1>
+            </div>
+    
+            <div data-role="content">
+
+            </div>
+    
+            <div data-theme="a" data-role="footer">
+                <a href="#home" class="ui-btn-left" data-transition="slidefade" data-direction="reverse">Back</a>
+            </div>
+        </div>
 </body>
 
 </html>
