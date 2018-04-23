@@ -1,3 +1,10 @@
+/*Things that still need to be added
+1. Dynamically updated graph based on the clicked object
+2. Dynamically updated image should be displayed when clicked on the product
+
+
+*/
+
 //creating objects of grocery items
 //productlist
 var plist = new Array();
@@ -42,9 +49,13 @@ $(document).one('ready',function(){
     
 });
 
-//loads on home page
+
+//Loads on the home page !Blocks other JS!
 $(document).on('pagecreate', '#home', function(){    
-    google.charts.load('current', {'packages':['corechart']});
+
+
+    // Shows statistics 
+    google.charts.load('current', {'packages':['corechart', 'bar']});
 
     // Set a callback to run when the Google Visualization API is loaded.
     google.charts.setOnLoadCallback(drawChart);
@@ -52,27 +63,42 @@ $(document).on('pagecreate', '#home', function(){
     $prod = $("#prod");
     var title = $prod.text(); // Will be dynamically updated
     
-    function drawChart(title) {
-
-        // Create the data table.
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Nutrition');
-        data.addColumn('number', 'Slices');
-        data.addRows([
-          ['Calories', 200],
-          ['Fat', 0.1],
-          ['Sodium', 40],
-          ['Carbohydrate', 55],
-          ['Protein', 0.1]
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Nutrition', 'Miligrams', {role: 'style'}],
+          ['Calories', 200, 'color: #35e05a'],
+          ['Fat', 0, 'color: #35e05a'],
+          ['Sodium', 40, 'color: #35e05a'],
+          ['Carbohydrate', 55, 'color: #35e05a'],
+          ['Protein', 0, 'color: #35e05a']
         ]);
-
-        // Set chart options
-        var options = {'title': 'Product',
-                       'width':400,
-                       'height':300};
-
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+  
+        var options = {
+          title: 'Nutrition Facts',
+          chartArea: {width: '50%'},
+          hAxis: {
+            title: 'Miligrams',
+            minValue: 0,
+            textStyle: {
+              bold: true,
+              fontSize: 12,
+              color: '#4d4d4d'
+            },
+            titleTextStyle: {
+              bold: true,
+              fontSize: 18,
+              color: '#4d4d4d'
+            }
+          },
+          vAxis: {
+            titleTextStyle: {
+              fontSize: 14,
+              bold: true,
+              color: '#848484'
+            }
+          }
+        };
+        var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
         chart.draw(data, options);
       }
 });
@@ -117,12 +143,6 @@ $(document).on('pagecreate','#searchPage',function(){
         //refresh list view
         ul.listview('refresh');
     
-    
-    //var input, filter, ul, li, a, i;
-    //input = $("#myInput");
-    //filter = input.text().toUpperCase();
-    //li = ul.getElementsByTagName("li");
-    
     //Create Trigger for key press to search 
      $("#myInput").on("keyup", function() {
         var value = $(this).val().toLowerCase();
@@ -138,11 +158,12 @@ $(document).on('click','#productsList>li',function(){
     console.log(rowid);
     });
 
-//On product info open
+//On product-info open
 $(document).on("pageshow","#product_info",function(){
         //$("#productName").html("");
         //$("#productPrice").html("");
         
+    //Incomplete depending on Product-Info page Changes should be done here
         $("#productName").append(plist[rowid].iproductName);
         
         $("#productPrice").append(plist[rowid].iprice);

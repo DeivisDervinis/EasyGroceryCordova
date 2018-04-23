@@ -76,18 +76,7 @@
                 <li>
                     <a id="prod" href="#product_info">Coca Cola</a>
                 </li>
-                <li>
-                    <a href="#">Abbott Sargent</a>
-                </li>
-                <li>
-                    <a href="#">Bowen Doyle</a>
-                </li>
-                <li>
-                    <a href="#">Aimee Frazier</a>
-                </li>
-                <li>
-                    <a href="#">Vinson Drake</a>
-                </li>
+                
             </ul>
         </div>
 
@@ -120,7 +109,9 @@
         </div>
 
         <div data-role="content">
+            <ul data-role="listview"> <!-- Will be populated when user clicks on cart button-->
 
+            </ul>
         </div>
 
         <div data-theme="a" data-role="footer">
@@ -142,14 +133,7 @@
                     <div id="prod_container" class="ui-block-b">
                         <p>Name:</p><p id="productName"></p>
                         <p>Price:</p><p id="productPrice"></p>
-                        <p>nutritionFacts:</p>
-                        <table id=nutritionFacts>
-                            <tr>
-                            <th>Calories</th>
-                            <th>Nutfree</th>
-                            <th>Sugar</th>
-                            </tr>
-                        </table>
+                        <a href="#cart" class="ui-btn-right" data-transition="slidefade">Add to Cart</a>
                     </div>
                 </div>
                 <div id="chart_div"></div>
