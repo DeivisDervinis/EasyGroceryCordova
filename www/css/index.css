@@ -17,15 +17,7 @@
  * under the License.
  */
 
-#banana{
-    margin-top: 50px;
-    margin-left: 10px;
-    width: 90vw;
-    height: 80vh;
-}
 
-#cola{
-    margin-top: 10px;
-    width: 50vw;
-    height: 30vh;
+.bolded{
+    font-weight: bolder;
 }

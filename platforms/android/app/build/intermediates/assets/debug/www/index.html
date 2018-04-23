@@ -60,11 +60,11 @@
         </div>
 
         <div data-role="content">
-            <img id="banana" src="https://images-na.ssl-images-amazon.com/images/I/71gI-IUNUkL._SL1500_.jpg" alt="image"/>
+            <!--Interesting Screen-->
         </div>
     </div>
 
-
+    <!--Products ================================================== -->
     <div data-role="page" id="products">
 
         <div data-theme="b" data-role="header" data-position="fixed">
@@ -74,7 +74,7 @@
         <div data-role="content">
             <ul id="productsList" data-role="listview">
                 <!--Here Goes the product List-->
-                
+
             </ul>
         </div>
 
@@ -82,6 +82,7 @@
             <a href="#home" class="ui-btn-left" data-transition="slidefade" data-direction="reverse">Back</a>
         </div>
     </div>
+    <!--Products END ================================================== -->
 
     <div data-role="page" id="searchPage">
 
@@ -91,7 +92,7 @@
 
         <div data-role="content">
             <label for="search-basic">Search Input:</label>
-            <input type="text" id="myInput" placeholder="Search for product.." title="Type in a name">       
+            <input type="text" id="myInput" placeholder="Search for product.." title="Type in a name">
         </div>
         <ul id="productsListSearch" data-role="listview">
             <!--Here Goes the product List-->
@@ -102,6 +103,7 @@
         </div>
     </div>
 
+    <!--Cart                                                 -->
     <div data-role="page" id="cart">
 
         <div data-theme="b" data-role="header" data-position="fixed">
@@ -109,7 +111,8 @@
         </div>
 
         <div data-role="content">
-            <ul id="cartUserList" data-role="listview"> <!-- Will be populated when user clicks on cart button-->
+            <ul id="cartUserList" data-role="listview">
+                <!-- Will be populated when user clicks on cart button-->
 
             </ul>
         </div>
@@ -118,34 +121,41 @@
             <a href="#home" class="ui-btn-left" data-transition="slidefade" data-direction="reverse">Back</a>
         </div>
     </div>
+    <!--Cart END -->
 
+    <!--Product info ================================================== -->
     <div data-role="page" id="product_info">
 
-            <div data-theme="b" data-role="header" data-position="fixed">
-                <h1>Product Info</h1> <!--Needs to be dynamically updated-->
-            </div>
-    
-            <div data-role="content"> <!--Needs to be dynamically updated-->
-                <div class="ui-grid-a">
-                    <div class="ui-block-a">
-                            <!--<img id="cola" src="https://www.118store.com/31171-thickbox_default/coca-cola-glass-bottles.jpg" alt="image"/>-->
-                    </div>
-                    <div id="prod_container" class="ui-block-b">
-                        <p>Name:</p><p id="productName"></p>
-                        <p>Price:</p><p id="productPrice"></p>
-                        
-                    </div>
-                </div>
-                <div id="chart_div"></div>
-            
-            </div>
-            
-    
-            <div data-theme="a" data-role="footer">
-                <a href="#home" class="ui-btn-left" data-transition="slidefade" data-direction="reverse">Back</a>
-                <a id="buyButton" href="#cart" class="ui-btn-right" data-transition="slidefade">Add to Cart</a>
-            </div>
+        <div data-theme="b" data-role="header" data-position="fixed">
+            <h1>Product Info</h1>
+            <!--Needs to be dynamically updated-->
         </div>
+
+        <div data-role="content">
+            <div class="ui-grid-a">
+                <div class="ui-block-a">
+                    <div id="image"> </div>
+                </div>
+                <div id="prod_container" class="ui-block-b">
+                    <span class="bolded">Name:
+                        <p id="productName"></p>
+                    </span>
+                    <span class="bolded">Price:
+                        <p id="productPrice"></p>
+                    </span>
+
+                </div>
+            </div>
+            <div id="chart_div"></div>
+        </div>
+
+
+        <div data-theme="a" data-role="footer">
+            <a href="#products" class="ui-btn-left" data-transition="slidefade" data-direction="reverse">Back</a>
+            <a id="buyButton" href="#cart" class="ui-btn-right" data-transition="slidefade">Add to Cart</a>
+        </div>
+    </div>
+    <!--Products info END ================================================== -->
 </body>
 
 </html>

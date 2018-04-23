@@ -4,7 +4,7 @@
         "id": 0,
         "productName": "Coca Cola",
         "price": "$0.99",
-        "picture": "http://placehold.it/32x32",
+        "picture": "coke.jpg",
         "nutritionFacts": 
           {
             "calories": "200",
@@ -19,7 +19,7 @@
         "id": 1,
         "productName": "Dark Chocolate",
         "price": "$3.99",
-        "picture": "http://placehold.it/32x32",
+        "picture": "choco.jpg",
         "nutritionFacts": 
           {
             "calories": "884",
@@ -32,16 +32,16 @@
       },
       {
         "id": 2,
-        "productName": "Coffee",
-        "price": "$1.75",
-        "picture": "http://placehold.it/32x32",
+        "productName": "100g of Pancakes",
+        "price": "$3.00",
+        "picture": "pancakes.jpg",
         "nutritionFacts": 
           {
-            "calories": "0",
-            "fat": "0",
+            "calories": "227",
+            "fat": "10",
             "sodium": "0.4",
-            "carbohydrate": "0",
-            "protein": "0.94"
+            "carbohydrate": "28",
+            "protein": "6"
           }
         
       },
@@ -49,7 +49,7 @@
         "id": 3,
         "productName": "BLT Sandwich",
         "price": "$8.49",
-        "picture": "http://placehold.it/32x32",
+        "picture": "blt.jpg",
         "nutritionFacts": 
           {
             "calories": "549",
@@ -64,7 +64,7 @@
         "id": 4,
         "productName": "Hot Chocolate",
         "price": "$1.75",
-        "picture": "http://placehold.it/32x32",
+        "picture": "hotcocao.jpg",
         "nutritionFacts": 
           {
             "calories": "100",
