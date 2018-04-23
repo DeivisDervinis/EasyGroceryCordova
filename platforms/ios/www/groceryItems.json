@@ -1,0 +1,74 @@
+{
+    "groceryItems": [
+      { 
+        "id": 0,
+        "productName": "Viola Ruiz",
+        "price": "$2,198.79",
+        "picture": "http://placehold.it/32x32",
+        "nutritionFacts": 
+          {
+            "calories": 0,
+            "nutFree": "Lawanda Mccarty",
+            "sugar": "$3,039.79",
+            "dairy": "$2,131.67"
+          }
+        
+      },
+      {
+        "id": 1,
+        "productName": "Abbott Sargent",
+        "price": "$3,068.15",
+        "picture": "http://placehold.it/32x32",
+        "nutritionFacts": 
+          {
+            "calories": 0,
+            "nutFree": "Wright Macdonald",
+            "sugar": "$2,403.40",
+            "dairy": "$3,186.75"
+          }
+        
+      },
+      {
+        "id": 2,
+        "productName": "Bowen Doyle",
+        "price": "$1,301.84",
+        "picture": "http://placehold.it/32x32",
+        "nutritionFacts": 
+          {
+            "calories": 0,
+            "nutFree": "Jana Castro",
+            "sugar": "$2,005.86",
+            "dairy": "$1,604.17"
+          }
+        
+      },
+      {
+        "id": 3,
+        "productName": "Aimee Frazier",
+        "price": "$3,673.37",
+        "picture": "http://placehold.it/32x32",
+        "nutritionFacts": 
+          {
+            "calories": 0,
+            "nutFree": "Bush Leblanc",
+            "sugar": "$1,091.22",
+            "dairy": "$1,207.03"
+          }
+        
+      },
+      {
+        "id": 4,
+        "productName": "Vinson Drake",
+        "price": "$1,822.40",
+        "picture": "http://placehold.it/32x32",
+        "nutritionFacts": 
+          {
+            "calories": 0,
+            "nutFree": "Gilmore Randall",
+            "sugar": "$1,051.86",
+            "dairy": "$2,362.90"
+          }
+        
+      }
+    ]
+}

@@ -5,6 +5,8 @@ var plist = new Array();
 var newItem;
 //keeps id of selected list
 var rowid;
+//keeps last PageID
+var pageID;
 
 function Item(itemID, iproductName, iprice, ipicture, icalories,inutFree,isugar,idairy) {
 	this.itemID = itemID;

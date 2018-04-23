@@ -117,12 +117,6 @@ $(document).on('pagecreate','#searchPage',function(){
         //refresh list view
         ul.listview('refresh');
     
-    
-    //var input, filter, ul, li, a, i;
-    //input = $("#myInput");
-    //filter = input.text().toUpperCase();
-    //li = ul.getElementsByTagName("li");
-    
     //Create Trigger for key press to search 
      $("#myInput").on("keyup", function() {
         var value = $(this).val().toLowerCase();
@@ -138,11 +132,12 @@ $(document).on('click','#productsList>li',function(){
     console.log(rowid);
     });
 
-//On product info open
+//On product-info open
 $(document).on("pageshow","#product_info",function(){
         //$("#productName").html("");
         //$("#productPrice").html("");
         
+    //Incomplete depending on Product-Info page Changes should be done here
         $("#productName").append(plist[rowid].iproductName);
         
         $("#productPrice").append(plist[rowid].iprice);

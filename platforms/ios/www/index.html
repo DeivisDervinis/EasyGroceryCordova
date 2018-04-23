@@ -18,8 +18,9 @@
     under the License.
 -->
 <html>
-    <head>
-        <!--
+
+<head>
+    <!--
         Customize this policy to fit your own app's needs. For more guidance, see:
             https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
         Some notes:
@@ -28,22 +29,136 @@
             * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
                 * Enable inline JS: add 'unsafe-inline' to default-src
         -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-        <link rel="stylesheet" type="text/css" href="css/index.css">
-        <title>Hello World</title>
-    </head>
-    <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
+    <title>jQM Complex Demo</title>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="js/index.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+
+<body>
+    <div data-role="page" id="home">
+
+        <div data-role="header" data-theme="b">
+            <div data-role="navbar">
+                <ul>
+                    <li>
+                        <a href="#searchPage" data-transition="slidefade" data-direction="reverse">Search</a>
+                    </li>
+                    <li>
+                        <a href="#products" data-transition="slidefade">Products</a>
+                    </li>
+                    <li>
+                        <a href="#cart" data-transition="slidefade">Cart</a>
+                    </li>
+                </ul>
             </div>
         </div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-    </body>
+
+        <div data-role="content">
+            <img id="banana" src="https://images-na.ssl-images-amazon.com/images/I/71gI-IUNUkL._SL1500_.jpg" alt="image"/>
+        </div>
+    </div>
+
+
+    <div data-role="page" id="products">
+
+        <div data-theme="b" data-role="header" data-position="fixed">
+            <h1>Products</h1>
+        </div>
+
+        <div data-role="content">
+            <ul id="productsList" data-role="listview">
+                <li>
+                    <a id="prod" href="#product_info">Coca Cola</a>
+                </li>
+                <li>
+                    <a href="#">Abbott Sargent</a>
+                </li>
+                <li>
+                    <a href="#">Bowen Doyle</a>
+                </li>
+                <li>
+                    <a href="#">Aimee Frazier</a>
+                </li>
+                <li>
+                    <a href="#">Vinson Drake</a>
+                </li>
+            </ul>
+        </div>
+
+        <div data-theme="a" data-role="footer">
+            <a href="#home" class="ui-btn-left" data-transition="slidefade" data-direction="reverse">Back</a>
+        </div>
+    </div>
+
+    <div data-role="page" id="searchPage">
+
+        <div data-theme="b" data-role="header" data-position="fixed">
+            <h1>Find a product</h1>
+        </div>
+
+        <div data-role="content">
+            <label for="search-basic">Search Input:</label>
+            <input type="text" id="myInput" placeholder="Search for product.." title="Type in a name">       
+        </div>
+        <ul id="productsListSearch" data-role="listview"></ul>
+
+        <div data-theme="a" data-role="footer">
+            <a href="#home" class="ui-btn-right" data-transition="slidefade">Back</a>
+        </div>
+    </div>
+
+    <div data-role="page" id="cart">
+
+        <div data-theme="b" data-role="header" data-position="fixed">
+            <h1>Cart</h1>
+        </div>
+
+        <div data-role="content">
+
+        </div>
+
+        <div data-theme="a" data-role="footer">
+            <a href="#home" class="ui-btn-left" data-transition="slidefade" data-direction="reverse">Back</a>
+        </div>
+    </div>
+
+    <div data-role="page" id="product_info">
+
+            <div data-theme="b" data-role="header" data-position="fixed">
+                <h1>Product Info</h1> <!--Needs to be dynamically updated-->
+            </div>
+    
+            <div data-role="content"> <!--Needs to be dynamically updated-->
+                <div class="ui-grid-a">
+                    <div class="ui-block-a">
+                            <!--<img id="cola" src="https://www.118store.com/31171-thickbox_default/coca-cola-glass-bottles.jpg" alt="image"/>-->
+                    </div>
+                    <div id="prod_container" class="ui-block-b">
+                        <p>Name:</p><p id="productName"></p>
+                        <p>Price:</p><p id="productPrice"></p>
+                        <p>nutritionFacts:</p>
+                        <table id=nutritionFacts>
+                            <tr>
+                            <th>Calories</th>
+                            <th>Nutfree</th>
+                            <th>Sugar</th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div id="chart_div"></div>
+            </div>
+    
+            <div data-theme="a" data-role="footer">
+                <a href="#home" class="ui-btn-left" data-transition="slidefade" data-direction="reverse">Back</a>
+            </div>
+        </div>
+</body>
+
 </html>

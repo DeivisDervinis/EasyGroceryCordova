@@ -1,46 +1,149 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
-var app = {
-    // Application Constructor
-    initialize: function() {
-        document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
-    },
+//creating objects of grocery items
+//productlist
+var plist = new Array();
+//reference object
+var newItem;
+//keeps id of selected list
+var rowid;
+//keeps last PageID
+var pageID;
 
-    // deviceready Event Handler
-    //
-    // Bind any cordova events here. Common events are:
-    // 'pause', 'resume', etc.
-    onDeviceReady: function() {
-        this.receivedEvent('deviceready');
-    },
+function Item(itemID, iproductName, iprice, ipicture, icalories,inutFree,isugar,idairy) {
+	this.itemID = itemID;
+	this.iproductName = iproductName;
+	this.iprice = iprice;
+	this.ipicture = ipicture;
+    this.icalories = icalories;
+    this.inutFree = inutFree;
+    this.isugar = isugar;
+	this.idairy = idairy;
+}
 
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
+//Load once on intial document load
+$(document).one('ready',function(){
+    //get data from JSON file
+    $.getJSON("groceryItems.json",function(data){
+       console.log(data); 
+        
+        //make the data start point
+        start = data.groceryItems;
+        
+        for(x=0;x<start.length;x++)
+            {
+                //get Item from JSON and make object 
+                newItem = new Item(start[x].id,start[x].productName,start[x].price,start[x].picture,start[x].nutritionFacts.calories,start[x].nutritionFacts.nutFree,start[x].nutritionFacts.sugar,start[x].nutritionFacts.dairy);
+                
+                //insert object into array lost of products
+                plist.push(newItem);
+                
+            }
+        
+    });
+    
+});
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
+//loads on home page
+$(document).on('pagecreate', '#home', function(){    
+    google.charts.load('current', {'packages':['corechart']});
 
-        console.log('Received Event: ' + id);
-    }
-};
+    // Set a callback to run when the Google Visualization API is loaded.
+    google.charts.setOnLoadCallback(drawChart);
+  
+    $prod = $("#prod");
+    var title = $prod.text(); // Will be dynamically updated
+    
+    function drawChart(title) {
 
-app.initialize();
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Nutrition');
+        data.addColumn('number', 'Slices');
+        data.addRows([
+          ['Calories', 200],
+          ['Fat', 0.1],
+          ['Sodium', 40],
+          ['Carbohydrate', 55],
+          ['Protein', 0.1]
+        ]);
+
+        // Set chart options
+        var options = {'title': 'Product',
+                       'width':400,
+                       'height':300};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+});
+
+//loaded when the products page is lanched
+$(document).on('pagecreate','#products',function(){
+    
+        //Display the JSON data to user.
+        //for loop through the array list 
+        ul = $("#productsList");
+        for(x=0;x<plist.length;x++)
+            {
+                
+                //append to list view
+                 ul.append(
+                    
+                    "<li li-id='"+x+"'><a href='#product_info'>"+plist[x].iproductName+"</a></li>"
+                );
+                
+            }
+        //refresh list view
+        ul.listview('refresh');
+        
+    
+});
+
+//Loaded when search page is opened
+$(document).on('pagecreate','#searchPage',function(){
+    
+    //Load List 
+    ul = $("#productsListSearch");
+    for(x=0;x<plist.length;x++)
+            {
+                
+                //append to list view
+                 ul.append(
+                    
+                    "<li><a>"+plist[x].iproductName+"</a></li>"
+                );
+                
+            }
+        //refresh list view
+        ul.listview('refresh');
+    
+    
+    //var input, filter, ul, li, a, i;
+    //input = $("#myInput");
+    //filter = input.text().toUpperCase();
+    //li = ul.getElementsByTagName("li");
+    
+    //Create Trigger for key press to search 
+     $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#productsListSearch li").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+    
+});
+//Gets the option selected 
+$(document).on('click','#productsList>li',function(){
+        rowid = $(this).closest("li").attr("li-id");
+    console.log(rowid);
+    });
+
+//On product info open
+$(document).on("pageshow","#product_info",function(){
+        //$("#productName").html("");
+        //$("#productPrice").html("");
+        
+        $("#productName").append(plist[rowid].iproductName);
+        
+        $("#productPrice").append(plist[rowid].iprice);
+    });
