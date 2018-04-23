@@ -206,6 +206,7 @@ $(document).on("pageshow","#cart",function(){
     
     //add to List in cart
     ul = $("#cartUserList");
+    ul.empty();
     for(x=0;x<cartlist.length;x++)
             {
                 
