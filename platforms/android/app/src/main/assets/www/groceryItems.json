@@ -2,71 +2,76 @@
     "groceryItems": [
       { 
         "id": 0,
-        "productName": "Viola Ruiz",
-        "price": "$2,198.79",
+        "productName": "Coca Cola",
+        "price": "$0.99",
         "picture": "http://placehold.it/32x32",
         "nutritionFacts": 
           {
-            "calories": 0,
-            "nutFree": "Lawanda Mccarty",
-            "sugar": "$3,039.79",
-            "dairy": "$2,131.67"
+            "calories": "200",
+            "fat": "0",
+            "sodium": "0.4",
+            "carbohydrate": "55",
+            "protein": "0"
           }
         
       },
       {
         "id": 1,
-        "productName": "Abbott Sargent",
-        "price": "$3,068.15",
+        "productName": "Dark Chocolate",
+        "price": "$3.99",
         "picture": "http://placehold.it/32x32",
         "nutritionFacts": 
           {
-            "calories": 0,
-            "nutFree": "Wright Macdonald",
-            "sugar": "$2,403.40",
-            "dairy": "$3,186.75"
+            "calories": "884",
+            "fat": "51",
+            "sodium": "0.39",
+            "carbohydrate": "99",
+            "protein": "8"
           }
         
       },
       {
         "id": 2,
-        "productName": "Bowen Doyle",
-        "price": "$1,301.84",
+        "productName": "Coffee",
+        "price": "$1.75",
         "picture": "http://placehold.it/32x32",
         "nutritionFacts": 
           {
-            "calories": 0,
-            "nutFree": "Jana Castro",
-            "sugar": "$2,005.86",
-            "dairy": "$1,604.17"
+            "calories": "0",
+            "fat": "0",
+            "sodium": "0.4",
+            "carbohydrate": "0",
+            "protein": "0.94"
           }
         
       },
       {
         "id": 3,
-        "productName": "Aimee Frazier",
-        "price": "$3,673.37",
+        "productName": "BLT Sandwich",
+        "price": "$8.49",
         "picture": "http://placehold.it/32x32",
         "nutritionFacts": 
           {
-            "calories": 0,
-            "nutFree": "Bush Leblanc",
-            "sugar": "$1,091.22",
-            "dairy": "$1,207.03"
+            "calories": "549",
+            "fat": "34",
+            "sodium": "1.1",
+            "carbohydrate": "42.5",
+            "protein": "16.2"
           }
         
       },
       {
         "id": 4,
-        "productName": "Vinson Drake",
-        "price": "$1,822.40",
+        "productName": "Hot Chocolate",
+        "price": "$1.75",
         "picture": "http://placehold.it/32x32",
         "nutritionFacts": 
           {
-            "calories": 0,
-            "nutFree": "Gilmore Randall",
-            "sugar": "$1,051.86",
-            "dairy": "$2,362.90"
+            "calories": "100",
+            "fat": "2",
+            "sodium": "0.1",
+            "carbohydrate": "20",
+            "protein": "1"
           }
         
       }

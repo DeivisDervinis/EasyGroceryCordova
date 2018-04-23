@@ -73,9 +73,7 @@
 
         <div data-role="content">
             <ul id="productsList" data-role="listview">
-                <li>
-                    <a id="prod" href="#product_info">Coca Cola</a>
-                </li>
+                <!--Here Goes the product List-->
                 
             </ul>
         </div>
@@ -95,7 +93,9 @@
             <label for="search-basic">Search Input:</label>
             <input type="text" id="myInput" placeholder="Search for product.." title="Type in a name">       
         </div>
-        <ul id="productsListSearch" data-role="listview"></ul>
+        <ul id="productsListSearch" data-role="listview">
+            <!--Here Goes the product List-->
+        </ul>
 
         <div data-theme="a" data-role="footer">
             <a href="#home" class="ui-btn-right" data-transition="slidefade">Back</a>
@@ -109,7 +109,7 @@
         </div>
 
         <div data-role="content">
-            <ul data-role="listview"> <!-- Will be populated when user clicks on cart button-->
+            <ul id="cartUserList" data-role="listview"> <!-- Will be populated when user clicks on cart button-->
 
             </ul>
         </div>
@@ -133,14 +133,17 @@
                     <div id="prod_container" class="ui-block-b">
                         <p>Name:</p><p id="productName"></p>
                         <p>Price:</p><p id="productPrice"></p>
-                        <a href="#cart" class="ui-btn-right" data-transition="slidefade">Add to Cart</a>
+                        
                     </div>
                 </div>
                 <div id="chart_div"></div>
+            
             </div>
+            
     
             <div data-theme="a" data-role="footer">
                 <a href="#home" class="ui-btn-left" data-transition="slidefade" data-direction="reverse">Back</a>
+                <a id="buyButton" href="#cart" class="ui-btn-right" data-transition="slidefade">Add to Cart</a>
             </div>
         </div>
 </body>

@@ -1,19 +1,25 @@
 /*Things that still need to be added
 1. Dynamically updated graph based on the clicked object
 2. Dynamically updated image should be displayed when clicked on the product
-
+3. Organize the code better
+4. Solve the async issue with the product info, unable to go back with the button
+5. Update JSON file to store products and not humans
 
 */
 
 //creating objects of grocery items
-//productlist
+//Fullproductlist
 var plist = new Array();
+//CartList
+var cartlist = new Array();
 //reference object
 var newItem;
 //keeps id of selected list
 var rowid;
 //keeps last PageID
 var pageID;
+var nextPageID
+var prevPageID
 
 function Item(itemID, iproductName, iprice, ipicture, icalories,inutFree,isugar,idairy) {
 	this.itemID = itemID;
@@ -110,8 +116,7 @@ $(document).on('pagecreate','#products',function(){
         //for loop through the array list 
         ul = $("#productsList");
         for(x=0;x<plist.length;x++)
-            {
-                
+            {             
                 //append to list view
                  ul.append(
                     
@@ -136,7 +141,7 @@ $(document).on('pagecreate','#searchPage',function(){
                 //append to list view
                  ul.append(
                     
-                    "<li><a>"+plist[x].iproductName+"</a></li>"
+                    "<li li-id='"+x+"'><a>"+plist[x].iproductName+"</a></li>"
                 );
                 
             }
@@ -152,8 +157,8 @@ $(document).on('pagecreate','#searchPage',function(){
     });
     
 });
-//Gets the option selected 
-$(document).on('click','#productsList>li',function(){
+//Gets the option selected on click or tap 
+$(document).on('click tap','#productsList>li',function(){
         rowid = $(this).closest("li").attr("li-id");
     console.log(rowid);
     });
@@ -162,9 +167,63 @@ $(document).on('click','#productsList>li',function(){
 $(document).on("pageshow","#product_info",function(){
         //$("#productName").html("");
         //$("#productPrice").html("");
-        
+     //rowID has to be preassigned or code breaks    
     //Incomplete depending on Product-Info page Changes should be done here
         $("#productName").append(plist[rowid].iproductName);
         
         $("#productPrice").append(plist[rowid].iprice);
     });
+
+//Swipe functions if want to add later
+/*$(document).one('pagecreate',function(){ 
+    $('[data-role=page]').on('swipeleft',function(){
+        nextPageID =$(this).next().attr('ID');
+        $.mobile.changePage('#'+nextPageID, {transition: 'slide'} );
+    });
+    
+    $('[data-role=page]').on('swiperight',function(){
+        prevPageID =$(this).prev().attr('ID');
+        $.mobile.changePage('#'+prevPageID, {transition: 'slide',reverse :true});
+    });
+});*/
+
+//Add to Cart Button 
+$(document).on("click", "#buyButton", function() {
+	//rowid = $(this).closest("li").attr("li-id");
+    cartlist.push(plist[rowid]);
+    //localStorage.setItem("rowid",rowid);
+    //empty Local Stroage
+    localStorage.setItem("cartlist","");
+    //Set Local Storage
+    localStorage.setItem("cartlist",JSON.stringify(cartlist));
+})
+
+//On Cart Page loaded
+$(document).on("pageshow","#cart",function(){
+    //Get Data from local Storage
+    //rowid = localStorage.getItem("rowid");
+    cartlist =JSON.parse(localStorage.getItem("cartlist"));
+    
+    //add to List in cart
+    ul = $("#cartUserList");
+    ul.empty();
+    for(x=0;x<cartlist.length;x++)
+            {
+                
+                //append to list view
+                 ul.append(
+                    
+                    "<li li-id='"+x+"'><a>"+cartlist[x].iproductName+"</a></li>"
+                );
+                
+            }
+        //refresh list view
+        ul.listview('refresh');
+    
+});
+$(document).on("pageshow","#deleteCart",function(){
+    while (cartlist.length) {
+      cartlist.pop();
+    }
+    localStorage.clear();
+});
