@@ -27,3 +27,8 @@
     position: absolute;
     top: 40%;
 }
+
+.prod_ele{
+    position: relative;
+    bottom: 10px;
+}

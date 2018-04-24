@@ -14,12 +14,12 @@ var nextPageID
 var prevPageID
 
 // Constructor for the item
-function Item(itemID, iproductName, iprice, ipicture, icalories, ifat, isodium, icarbohydrate, iprotein) {
+function Item(itemID, iproductName,  icalories, iprice, ipicture, ifat, isodium, icarbohydrate, iprotein) {
     this.itemID = itemID;
     this.iproductName = iproductName;
+    this.icalories = icalories;
     this.iprice = iprice;
     this.ipicture = ipicture;
-    this.icalories = icalories;
     this.ifat = ifat;
     this.isodium = isodium;
     this.icarbohydrate = icarbohydrate;
@@ -39,9 +39,9 @@ $(document).one('ready', function () {
             newItem = new Item(
                 start[x].id,
                 start[x].productName,
+                start[x].calories,
                 start[x].price,
                 start[x].picture,
-                start[x].nutritionFacts.calories,
                 start[x].nutritionFacts.fat,
                 start[x].nutritionFacts.sodium,
                 start[x].nutritionFacts.carbohydrate,
@@ -117,6 +117,7 @@ $(document).on("pagebeforeshow", "#product_info", function () {
     // Clears the page
     $("#productName").empty();
     $("#productPrice").empty();
+    $("#productCalories").empty();
     $("#image").empty();
 
     //Builds the page based on the information from JSON 
@@ -124,9 +125,9 @@ $(document).on("pagebeforeshow", "#product_info", function () {
 
     $("#productName").append(plist[rowid].iproductName);
     $("#productPrice").append(plist[rowid].iprice);
+    $("#productCalories").append(plist[rowid].icalories);
 
     // Declares and initializes data for graph use
-    var calories = parseInt(plist[rowid].icalories);
     var fat = parseInt(plist[rowid].ifat);
     var sodium = parseInt(plist[rowid].isodium);
     var carbohydrate = parseInt(plist[rowid].icarbohydrate);
@@ -140,8 +141,7 @@ $(document).on("pagebeforeshow", "#product_info", function () {
 
     function drawChart() {
         var data = google.visualization.arrayToDataTable([
-            ['Nutrition', 'Values', { role: 'style' }],
-            ['Calories', calories, 'color: #448cff'],
+            ['Nutrition', 'Grams', { role: 'style' }],
             ['Fat', fat, 'color: #448cff'],
             ['Sodium', sodium, 'color: #448cff'],
             ['Carbohydrate',carbohydrate, 'color: #448cff'],
@@ -152,7 +152,7 @@ $(document).on("pagebeforeshow", "#product_info", function () {
             title: 'Nutrition Facts',
             chartArea: { width: '50%' },
             hAxis: {
-                title: 'Values',
+                title: 'Grams',
                 minValue: 0,
                 textStyle: {
                     bold: true,
@@ -300,5 +300,6 @@ $(document).on("pageshow", "#deleteCart", function () {
     while (cartlist.length) {
         cartlist.pop();
     }
+    // clears the storages
     localStorage.clear();
 });

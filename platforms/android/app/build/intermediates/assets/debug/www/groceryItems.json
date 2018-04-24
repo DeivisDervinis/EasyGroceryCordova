@@ -4,12 +4,12 @@
         "id": 0,
         "productName": "Coca Cola",
         "price": "$0.99",
+        "calories": "200",
         "picture": "coke.jpg",
         "nutritionFacts": 
           {
-            "calories": "200",
             "fat": "0",
-            "sodium": "0.4",
+            "sodium": "1",
             "carbohydrate": "55",
             "protein": "0"
           }
@@ -19,12 +19,12 @@
         "id": 1,
         "productName": "Dark Chocolate",
         "price": "$3.99",
+        "calories": "884",
         "picture": "choco.jpg",
         "nutritionFacts": 
           {
-            "calories": "884",
             "fat": "51",
-            "sodium": "0.39",
+            "sodium": "1",
             "carbohydrate": "99",
             "protein": "8"
           }
@@ -34,12 +34,12 @@
         "id": 2,
         "productName": "100g of Pancakes",
         "price": "$3.00",
+        "calories": "227",
         "picture": "pancakes.jpg",
         "nutritionFacts": 
           {
-            "calories": "227",
             "fat": "10",
-            "sodium": "0.4",
+            "sodium": "1",
             "carbohydrate": "28",
             "protein": "6"
           }
@@ -49,10 +49,10 @@
         "id": 3,
         "productName": "BLT Sandwich",
         "price": "$8.49",
+        "calories": "549",
         "picture": "blt.jpg",
         "nutritionFacts": 
           {
-            "calories": "549",
             "fat": "34",
             "sodium": "1.1",
             "carbohydrate": "42.5",
@@ -64,10 +64,10 @@
         "id": 4,
         "productName": "Hot Chocolate",
         "price": "$1.75",
+        "calories": "100",
         "picture": "hotcocao.jpg",
         "nutritionFacts": 
           {
-            "calories": "100",
             "fat": "2",
             "sodium": "0.1",
             "carbohydrate": "20",
