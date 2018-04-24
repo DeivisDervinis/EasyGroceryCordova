@@ -59,6 +59,7 @@ $(document).one('ready', function () {
             plist.push(newItem);
 
         }
+        console.log(plist);
 
     });
 
@@ -66,7 +67,7 @@ $(document).one('ready', function () {
 
 
 //Loads on the home page !Blocks other JS!
-$(document).on('pagecreate', '#home', function () {
+$(document).on('pageaftershow', '#home', function () {
 
 });
 
@@ -116,6 +117,7 @@ $(document).on('pagecreate', '#searchPage', function () {
     });
 
 });
+
 //Gets the option selected on click or tap 
 $(document).on('click tap', '#productsList>li', function () {
     rowid = $(this).closest("li").attr("li-id");
@@ -132,6 +134,12 @@ $(document).on("pagebeforeshow", "#product_info", function () {
     $("#productPrice").empty();
     $("#image").empty();
 
+    if(rowid != null)
+    {
+        //Enable Buy button
+        //$("#buyButton").prop(("disabled", false));
+        
+    //Build page around object    
     $("#image").append("<img src='./img/" +plist[rowid].ipicture +"' alt='' style='width: 150px', 'height: 150px';>");
 
     $("#productName").append(plist[rowid].iproductName);
@@ -190,7 +198,12 @@ $(document).on("pagebeforeshow", "#product_info", function () {
         };
         var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
         chart.draw(data, options);
-    }
+    }//end Draw Chart
+    }//End if rowid
+    else
+        {
+            //$("#buyButton").preventDefault();
+        }//to prevent emty item to be added to cart
 
 });
 
@@ -209,8 +222,9 @@ $(document).on("pagebeforeshow", "#product_info", function () {
 
 //Add to Cart Button 
 $(document).on("click", "#buyButton", function () {
-    //rowid = $(this).closest("li").attr("li-id");
+
     cartlist.push(plist[rowid]);
+    $("#cartBtn").removeClass("ui-disabled");
     //localStorage.setItem("rowid",rowid);
     //empty Local Stroage
     localStorage.setItem("cartlist", "");
@@ -235,9 +249,86 @@ $(document).on("pageshow", "#cart", function () {
         );
 
     }
+    //add empty cart Message
+    if(cartlist.length==0)
+        {
+            $("#emptyCartText").show();
+            $("#cartBtn").addClass("ui-disabled");
+        }
+    else{
+        $("#emptyCartText").hide();
+    }
     //refresh list view
     ul.listview('refresh');
+    
+    //Implemeting Swipe gestures to delete.
+    // Swipe to remove list item
+    $( document ).on( "swipeleft swiperight", "#cartUserList li", function( event ) {
+        var listitem = $( this ),
+            // These are the classnames used for the CSS transition
+            dir = event.type === "swipeleft" ? "left" : "right",
+            // Check if the browser supports the transform (3D) CSS transition
+            transition = $.support.cssTransform3d ? dir : false;
+            confirmAndDelete( listitem, transition );
+    });
+    
+    // If it's not a touch device...
+    if ( ! $.mobile.support.touch ) {
+        // Remove the class that is used to hide the delete button on touch devices
+        $( "#cartUserList" ).removeClass( "touch" );
+        // Click delete split-button to remove list item
+        $( ".delete" ).on( "click", function() {
+            var listitem = $( this ).parent( "li" );
+            confirmAndDelete( listitem );
+        });
+    }
+    function confirmAndDelete( listitem, transition ) {
+        // Highlight the list item that will be removed
+        listitem.children( ".ui-btn" ).addClass( "ui-btn-active" );
+        // Inject topic in confirmation popup after removing any previous injected topics
+        $( "#confirm .topic" ).remove();
+        listitem.find( ".topic" ).clone().insertAfter( "#question" );
+        // Show the confirmation popup
+        $( "#confirm" ).popup( "open" );
+        // Proceed when the user confirms
+        $( "#confirm #yes" ).on( "click", function() {
+            //Get index of item and remove from list and local storage
+            var tempid = $("#cartUserList li").index(listitem);
+            console.log("this is id of listitem in cart"+tempid);
+            if (tempid > -1) {
+              cartlist.splice(tempid, 1);
+            }
+            
+             //add empty cart Message
+                if(cartlist.length==0)
+                    {
+                        $("#emptyCartText").show();
+                    }
+                else{
+                    $("#emptyCartText").hide();
+    }
+            
+            
+            localStorage.setItem("cartlist", JSON.stringify(cartlist));
+            
+            
+            listitem.remove();
+            $( "#cartUserList" ).listview( "refresh" );
+            
+        });
+        // Remove active state and unbind when the cancel button is clicked
+        $( "#confirm #cancel" ).on( "click", function() {
+            listitem.removeClass( "ui-btn-active" );
+            $( "#confirm #yes" ).off();
+        });
+    }
 
+});
+
+//Gets the option selected on click or tap from cart on delete press
+$(document).on('click tap', '#productsList>li', function () {
+    rowid = $(this).closest("li").attr("li-id");
+    console.log(rowid);
 });
 
 $(document).on("pageshow", "#deleteCart", function () {

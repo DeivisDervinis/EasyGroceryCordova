@@ -67,7 +67,7 @@ $(document).one('ready', function () {
 
 
 //Loads on the home page !Blocks other JS!
-$(document).on('pagecreate', '#home', function () {
+$(document).on('pageaftershow', '#home', function () {
 
 });
 
@@ -222,8 +222,9 @@ $(document).on("pagebeforeshow", "#product_info", function () {
 
 //Add to Cart Button 
 $(document).on("click", "#buyButton", function () {
-    //rowid = $(this).closest("li").attr("li-id");
+
     cartlist.push(plist[rowid]);
+    $("#cartBtn").removeClass("ui-disabled");
     //localStorage.setItem("rowid",rowid);
     //empty Local Stroage
     localStorage.setItem("cartlist", "");
@@ -252,6 +253,7 @@ $(document).on("pageshow", "#cart", function () {
     if(cartlist.length==0)
         {
             $("#emptyCartText").show();
+            $("#cartBtn").addClass("ui-disabled");
         }
     else{
         $("#emptyCartText").hide();
