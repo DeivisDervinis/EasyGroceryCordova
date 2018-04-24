@@ -248,6 +248,14 @@ $(document).on("pageshow", "#cart", function () {
         );
 
     }
+    //add empty cart Message
+    if(cartlist.length==0)
+        {
+            $("#emptyCartText").show();
+        }
+    else{
+        $("#emptyCartText").hide();
+    }
     //refresh list view
     ul.listview('refresh');
     
@@ -289,6 +297,14 @@ $(document).on("pageshow", "#cart", function () {
               cartlist.splice(tempid, 1);
             }
             
+             //add empty cart Message
+                if(cartlist.length==0)
+                    {
+                        $("#emptyCartText").show();
+                    }
+                else{
+                    $("#emptyCartText").hide();
+    }
             
             
             localStorage.setItem("cartlist", JSON.stringify(cartlist));
