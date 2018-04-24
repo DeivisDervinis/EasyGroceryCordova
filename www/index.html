@@ -29,7 +29,7 @@
             * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
                 * Enable inline JS: add 'unsafe-inline' to default-src
         -->
-    <title>jQM Complex Demo</title>
+    <title>Easy Grocery</title>
     <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/index.css">
@@ -41,8 +41,10 @@
 </head>
 
 <body>
-    <div data-role="page" id="home">
 
+    <!--Home Page-->
+    <div data-role="page" id="home">
+        <!-- Header-->
         <div data-role="header" data-theme="b">
             <div data-role="navbar">
                 <ul>
@@ -50,7 +52,7 @@
                         <a href="#searchPage" data-transition="slidefade" data-direction="reverse">Search</a>
                     </li>
                     <li>
-                        <a href="#products" data-transition="slidefade">Products</a>
+                        <a href="#products" data-transition="slidedown">Products</a>
                     </li>
                     <li>
                         <a id="cartBtn" class="ui-disabled" href="#cart" data-transition="slidefade">Cart</a>
@@ -58,19 +60,21 @@
                 </ul>
             </div>
         </div>
-
+        <!-- Content-->
         <div data-role="content">
-            <!--Interesting Screen-->
+            <h1 id="title">Easy Grocery</h1>
         </div>
     </div>
 
     <!--Products ================================================== -->
     <div data-role="page" id="products">
 
+        <!-- Header-->
         <div data-theme="b" data-role="header" data-position="fixed">
             <h1>Products</h1>
         </div>
 
+        <!-- Content-->
         <div data-role="content">
             <ul id="productsList" data-role="listview">
                 <!--Here Goes the product List-->
@@ -78,27 +82,31 @@
             </ul>
         </div>
 
-        <div data-theme="a" data-role="footer">
-            <a href="#home" class="ui-btn-left" data-transition="slidefade" data-direction="reverse">Back</a>
+        <!-- Footer-->
+        <div data-theme="b" data-role="footer">
+            <a href="#home" class="ui-btn-left" data-transition="slidedown" data-direction="reverse">Back</a>
         </div>
     </div>
     <!--Products END ================================================== -->
 
     <div data-role="page" id="searchPage">
-
+        <!-- Header-->
         <div data-theme="b" data-role="header" data-position="fixed">
             <h1>Find a product</h1>
         </div>
 
+        <!-- Content-->
         <div data-role="content">
             <label for="search-basic">Search Input:</label>
             <input type="text" id="myInput" placeholder="Search for product.." title="Type in a name">
         </div>
+
         <ul id="productsListSearch" data-role="listview">
             <!--Here Goes the product List-->
         </ul>
 
-        <div data-theme="a" data-role="footer">
+        <!-- Footer-->
+        <div data-theme="b" data-role="footer">
             <a href="#home" class="ui-btn-right" data-transition="slidefade">Back</a>
         </div>
     </div>
@@ -106,32 +114,37 @@
     <!--Cart                                                 -->
     <div data-role="page" id="cart">
 
+        <!-- Header-->
         <div data-theme="b" data-role="header" data-position="fixed">
             <h1>Cart</h1>
         </div>
 
+        <!-- Content-->
         <div data-role="content">
-           <div id="emptyCartText"><p>No Items in cart</p></div>
+            <div id="emptyCartText">
+                <p>No Items in cart</p>
+            </div>
             <ul id="cartUserList" data-role="listview">
                 <!-- Will be populated when user clicks on cart button-->
 
             </ul>
 
-       <!-- /popup -->
-        <div id="confirm" class="ui-content" data-role="popup" data-theme="a">
-            <p id="question">Are you sure you want to delete:</p>
-            <div class="ui-grid-a">
-                <div class="ui-block-a">
-                    <a id="yes" class="ui-btn ui-corner-all ui-mini ui-btn-a" data-rel="back">Yes</a>
-                </div>
-                <div class="ui-block-b">
-                    <a id="cancel" class="ui-btn ui-corner-all ui-mini ui-btn-a" data-rel="back">Cancel</a>
+            <!-- /popup -->
+            <div id="confirm" class="ui-content" data-role="popup" data-theme="a">
+                <p id="question">Are you sure you want to delete:</p>
+                <div class="ui-grid-a">
+                    <div class="ui-block-a">
+                        <a id="yes" class="ui-btn ui-corner-all ui-mini ui-btn-a" data-rel="back">Yes</a>
+                    </div>
+                    <div class="ui-block-b">
+                        <a id="cancel" class="ui-btn ui-corner-all ui-mini ui-btn-a" data-rel="back">Cancel</a>
+                    </div>
                 </div>
             </div>
-        </div><!-- /popup -->
+            <!-- /popup -->
         </div>
 
-        <div data-theme="a" data-role="footer">
+        <div data-theme="b" data-role="footer">
             <a href="#home" class="ui-btn-left" data-transition="slidefade" data-direction="reverse">Back</a>
         </div>
     </div>
@@ -140,31 +153,31 @@
     <!--Product info ================================================== -->
     <div data-role="page" id="product_info">
 
+        <!--Header-->
         <div data-theme="b" data-role="header" data-position="fixed">
             <h1>Product Info</h1>
             <!--Needs to be dynamically updated-->
         </div>
 
+        <!-- Content-->
         <div data-role="content">
             <div class="ui-grid-a">
                 <div class="ui-block-a">
                     <div id="image"> </div>
                 </div>
                 <div id="prod_container" class="ui-block-b">
-                    <span class="bolded">Name:
-                        <p id="productName"></p>
-                    </span>
-                    <span class="bolded">Price:
-                        <p id="productPrice"></p>
-                    </span>
+                    <span class="bolded">Name: </span>
+                    <p id="productName"></p>
+                    <span class="bolded">Price: </span>
+                    <p id="productPrice"></p>
 
                 </div>
             </div>
             <div id="chart_div"></div>
         </div>
 
-
-        <div data-theme="a" data-role="footer">
+        <!--Footer-->
+        <div data-theme="b" data-role="footer">
             <a href="#products" class="ui-btn-left" data-transition="slidefade" data-direction="reverse">Back</a>
             <a id="buyButton" href="#cart" class="ui-btn-right" data-transition="slidefade">Add to Cart</a>
         </div>

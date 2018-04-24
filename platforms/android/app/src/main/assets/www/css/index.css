@@ -21,3 +21,9 @@
 .bolded{
     font-weight: bolder;
 }
+
+#title{
+    font-size: 64px;
+    position: absolute;
+    top: 40%;
+}

@@ -1,11 +1,3 @@
-/*Things that still need to be added
-1. Dynamically updated graph based on the clicked object
-2. Dynamically updated image should be displayed when clicked on the product
-3. Organize the code better
-4. Solve the async issue with the product info, unable to go back with the button
-5. Update JSON file to store products and not humans
-
-*/
 
 //creating objects of grocery items
 //Fullproductlist
@@ -21,6 +13,7 @@ var pageID;
 var nextPageID
 var prevPageID
 
+// Constructor for the item
 function Item(itemID, iproductName, iprice, ipicture, icalories, ifat, isodium, icarbohydrate, iprotein) {
     this.itemID = itemID;
     this.iproductName = iproductName;
@@ -37,7 +30,6 @@ function Item(itemID, iproductName, iprice, ipicture, icalories, ifat, isodium, 
 $(document).one('ready', function () {
     //get data from JSON file
     $.getJSON("groceryItems.json", function (data) {
-        console.log(data);
 
         //make the data start point
         start = data.groceryItems;
@@ -59,26 +51,21 @@ $(document).one('ready', function () {
             plist.push(newItem);
 
         }
-        console.log(plist);
 
     });
 
 });
 
 
-//Loads on the home page !Blocks other JS!
-$(document).on('pageaftershow', '#home', function () {
-
-});
-
-//loaded when the products page is lanched
+// A method that populates the products screen with products
 $(document).on('pagecreate', '#products', function () {
 
-    //Display the JSON data to user.
-    //for loop through the array list 
+    //Saves selector to a variable for an easier usage
     ul = $("#productsList");
+
+    // Runs a for loop based on the size of the list
     for (x = 0; x < plist.length; x++) {
-        //append to list view
+        // Adds the elements
         ul.append(
 
             "<li li-id='" + x + "'><a href='#product_info'>" + plist[x].iproductName + "</a></li>"
@@ -101,7 +88,7 @@ $(document).on('pagecreate', '#searchPage', function () {
         //append to list view
         ul.append(
 
-            "<li li-id='" + x + "'><a>" + plist[x].iproductName + "</a></li>"
+            "<li li-id='" + x + "'>" + plist[x].iproductName + "</li>"
         );
 
     }
@@ -126,25 +113,19 @@ $(document).on('click tap', '#productsList>li', function () {
 
 //On product-info open
 $(document).on("pagebeforeshow", "#product_info", function () {
-    //$("#productName").html("");
-    //$("#productPrice").html("");
-    //rowID has to be preassigned or code breaks    
-    //Incomplete depending on Product-Info page Changes should be done here
+
+    // Clears the page
     $("#productName").empty();
     $("#productPrice").empty();
     $("#image").empty();
 
-    if(rowid != null)
-    {
-        //Enable Buy button
-        //$("#buyButton").prop(("disabled", false));
-        
-    //Build page around object    
+    //Builds the page based on the information from JSON 
     $("#image").append("<img src='./img/" +plist[rowid].ipicture +"' alt='' style='width: 150px', 'height: 150px';>");
 
     $("#productName").append(plist[rowid].iproductName);
     $("#productPrice").append(plist[rowid].iprice);
 
+    // Declares and initializes data for graph use
     var calories = parseInt(plist[rowid].icalories);
     var fat = parseInt(plist[rowid].ifat);
     var sodium = parseInt(plist[rowid].isodium);
@@ -156,9 +137,6 @@ $(document).on("pagebeforeshow", "#product_info", function () {
 
     // Set a callback to run when the Google Visualization API is loaded.
     google.charts.setOnLoadCallback(drawChart);
-
-    $prod = $("#prod");
-    var title = $prod.text(); // Will be dynamically updated
 
     function drawChart() {
         var data = google.visualization.arrayToDataTable([
@@ -196,46 +174,32 @@ $(document).on("pagebeforeshow", "#product_info", function () {
             },
             legend: {position: 'none'}
         };
+
+        // Draws the chart
         var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
         chart.draw(data, options);
-    }//end Draw Chart
-    }//End if rowid
-    else
-        {
-            //$("#buyButton").preventDefault();
-        }//to prevent emty item to be added to cart
+    }
 
 });
 
-//Swipe functions if want to add later
-/*$(document).one('pagecreate',function(){ 
-    $('[data-role=page]').on('swipeleft',function(){
-        nextPageID =$(this).next().attr('ID');
-        $.mobile.changePage('#'+nextPageID, {transition: 'slide'} );
-    });
-    
-    $('[data-role=page]').on('swiperight',function(){
-        prevPageID =$(this).prev().attr('ID');
-        $.mobile.changePage('#'+prevPageID, {transition: 'slide',reverse :true});
-    });
-});*/
 
-//Add to Cart Button 
+// Method that gets triggered once user decides to add something to the cart
 $(document).on("click", "#buyButton", function () {
 
     cartlist.push(plist[rowid]);
     $("#cartBtn").removeClass("ui-disabled");
-    //localStorage.setItem("rowid",rowid);
-    //empty Local Stroage
+
+    // Empties the list
     localStorage.setItem("cartlist", "");
+
     //Set Local Storage
     localStorage.setItem("cartlist", JSON.stringify(cartlist));
 })
 
-//On Cart Page loaded
+// Method that gets triggered when cart gets opened
 $(document).on("pageshow", "#cart", function () {
-    //Get Data from local Storage
-    //rowid = localStorage.getItem("rowid");
+
+    //Get Data from local Storage;
     cartlist = JSON.parse(localStorage.getItem("cartlist"));
     //add to List in cart
     ul = $("#cartUserList");
@@ -253,7 +217,6 @@ $(document).on("pageshow", "#cart", function () {
     if(cartlist.length==0)
         {
             $("#emptyCartText").show();
-            $("#cartBtn").addClass("ui-disabled");
         }
     else{
         $("#emptyCartText").hide();
@@ -261,7 +224,6 @@ $(document).on("pageshow", "#cart", function () {
     //refresh list view
     ul.listview('refresh');
     
-    //Implemeting Swipe gestures to delete.
     // Swipe to remove list item
     $( document ).on( "swipeleft swiperight", "#cartUserList li", function( event ) {
         var listitem = $( this ),
@@ -282,6 +244,7 @@ $(document).on("pageshow", "#cart", function () {
             confirmAndDelete( listitem );
         });
     }
+
     function confirmAndDelete( listitem, transition ) {
         // Highlight the list item that will be removed
         listitem.children( ".ui-btn" ).addClass( "ui-btn-active" );
@@ -331,7 +294,9 @@ $(document).on('click tap', '#productsList>li', function () {
     console.log(rowid);
 });
 
+// If product gets deleted from a cart
 $(document).on("pageshow", "#deleteCart", function () {
+    // Removes the elements from the cartlist
     while (cartlist.length) {
         cartlist.pop();
     }
