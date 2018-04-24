@@ -187,7 +187,6 @@ $(document).on("pagebeforeshow", "#product_info", function () {
 $(document).on("click", "#buyButton", function () {
 
     cartlist.push(plist[rowid]);
-    $("#cartBtn").removeClass("ui-disabled");
 
     // Empties the list
     localStorage.setItem("cartlist", "");
